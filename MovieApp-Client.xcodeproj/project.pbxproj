@@ -85,14 +85,11 @@
 		8A5B8C6824FA6D4B00DA7B21 /* MovieApp-Client */ = {
 			isa = PBXGroup;
 			children = (
+				8AEDA52E24FA6F9500D96DE4 /* Resources */,
+				8AEDA52D24FA6F8200D96DE4 /* ViewControllers */,
+				8AEDA52C24FA6F7700D96DE4 /* Application */,
+				8AEDA52B24FA6F6B00D96DE4 /* Storyboards */,
 				8AEDA52024FA6DC900D96DE4 /* Submodules */,
-				8A5B8C6924FA6D4B00DA7B21 /* AppDelegate.swift */,
-				8A5B8C6B24FA6D4B00DA7B21 /* SceneDelegate.swift */,
-				8A5B8C6D24FA6D4B00DA7B21 /* ViewController.swift */,
-				8A5B8C6F24FA6D4B00DA7B21 /* Main.storyboard */,
-				8A5B8C7224FA6D4D00DA7B21 /* Assets.xcassets */,
-				8A5B8C7424FA6D4D00DA7B21 /* LaunchScreen.storyboard */,
-				8A5B8C7724FA6D4D00DA7B21 /* Info.plist */,
 			);
 			path = "MovieApp-Client";
 			sourceTree = "<group>";
@@ -118,6 +115,41 @@
 			children = (
 			);
 			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		8AEDA52B24FA6F6B00D96DE4 /* Storyboards */ = {
+			isa = PBXGroup;
+			children = (
+				8A5B8C7424FA6D4D00DA7B21 /* LaunchScreen.storyboard */,
+				8A5B8C6F24FA6D4B00DA7B21 /* Main.storyboard */,
+			);
+			path = Storyboards;
+			sourceTree = "<group>";
+		};
+		8AEDA52C24FA6F7700D96DE4 /* Application */ = {
+			isa = PBXGroup;
+			children = (
+				8A5B8C7724FA6D4D00DA7B21 /* Info.plist */,
+				8A5B8C6B24FA6D4B00DA7B21 /* SceneDelegate.swift */,
+				8A5B8C6924FA6D4B00DA7B21 /* AppDelegate.swift */,
+			);
+			path = Application;
+			sourceTree = "<group>";
+		};
+		8AEDA52D24FA6F8200D96DE4 /* ViewControllers */ = {
+			isa = PBXGroup;
+			children = (
+				8A5B8C6D24FA6D4B00DA7B21 /* ViewController.swift */,
+			);
+			path = ViewControllers;
+			sourceTree = "<group>";
+		};
+		8AEDA52E24FA6F9500D96DE4 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				8A5B8C7224FA6D4D00DA7B21 /* Assets.xcassets */,
+			);
+			path = Resources;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -355,7 +387,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				INFOPLIST_FILE = "MovieApp-Client/Info.plist";
+				INFOPLIST_FILE = "MovieApp-Client/Application/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -372,7 +404,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				INFOPLIST_FILE = "MovieApp-Client/Info.plist";
+				INFOPLIST_FILE = "MovieApp-Client/Application/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
