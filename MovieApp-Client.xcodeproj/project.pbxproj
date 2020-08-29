@@ -13,7 +13,33 @@
 		8A5B8C7124FA6D4B00DA7B21 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8A5B8C6F24FA6D4B00DA7B21 /* Main.storyboard */; };
 		8A5B8C7324FA6D4D00DA7B21 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8A5B8C7224FA6D4D00DA7B21 /* Assets.xcassets */; };
 		8A5B8C7624FA6D4D00DA7B21 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8A5B8C7424FA6D4D00DA7B21 /* LaunchScreen.storyboard */; };
+		8AEDA52824FA6DEF00D96DE4 /* MVVM_Architecture.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8AEDA52624FA6DE700D96DE4 /* MVVM_Architecture.framework */; };
+		8AEDA52924FA6DEF00D96DE4 /* MVVM_Architecture.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 8AEDA52624FA6DE700D96DE4 /* MVVM_Architecture.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 /* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		8AEDA52524FA6DE700D96DE4 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 8AEDA52124FA6DE700D96DE4 /* MVVM-Architecture.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 8AA4435624CDEB7900348B99;
+			remoteInfo = "MVVM-Architecture";
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		8AEDA52A24FA6DEF00D96DE4 /* Embed Frameworks */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				8AEDA52924FA6DEF00D96DE4 /* MVVM_Architecture.framework in Embed Frameworks */,
+			);
+			name = "Embed Frameworks";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
 		8A5B8C6624FA6D4B00DA7B21 /* MovieApp-Client.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "MovieApp-Client.app"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -24,6 +50,7 @@
 		8A5B8C7224FA6D4D00DA7B21 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		8A5B8C7524FA6D4D00DA7B21 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		8A5B8C7724FA6D4D00DA7B21 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		8AEDA52124FA6DE700D96DE4 /* MVVM-Architecture.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = "MVVM-Architecture.xcodeproj"; path = "Swift-MVVM-Architecture/MVVM-Architecture.xcodeproj"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -31,6 +58,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8AEDA52824FA6DEF00D96DE4 /* MVVM_Architecture.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -42,6 +70,7 @@
 			children = (
 				8A5B8C6824FA6D4B00DA7B21 /* MovieApp-Client */,
 				8A5B8C6724FA6D4B00DA7B21 /* Products */,
+				8AEDA52724FA6DEF00D96DE4 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -56,6 +85,7 @@
 		8A5B8C6824FA6D4B00DA7B21 /* MovieApp-Client */ = {
 			isa = PBXGroup;
 			children = (
+				8AEDA52024FA6DC900D96DE4 /* Submodules */,
 				8A5B8C6924FA6D4B00DA7B21 /* AppDelegate.swift */,
 				8A5B8C6B24FA6D4B00DA7B21 /* SceneDelegate.swift */,
 				8A5B8C6D24FA6D4B00DA7B21 /* ViewController.swift */,
@@ -65,6 +95,29 @@
 				8A5B8C7724FA6D4D00DA7B21 /* Info.plist */,
 			);
 			path = "MovieApp-Client";
+			sourceTree = "<group>";
+		};
+		8AEDA52024FA6DC900D96DE4 /* Submodules */ = {
+			isa = PBXGroup;
+			children = (
+				8AEDA52124FA6DE700D96DE4 /* MVVM-Architecture.xcodeproj */,
+			);
+			path = Submodules;
+			sourceTree = "<group>";
+		};
+		8AEDA52224FA6DE700D96DE4 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				8AEDA52624FA6DE700D96DE4 /* MVVM_Architecture.framework */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		8AEDA52724FA6DEF00D96DE4 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Frameworks;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -77,6 +130,7 @@
 				8A5B8C6224FA6D4B00DA7B21 /* Sources */,
 				8A5B8C6324FA6D4B00DA7B21 /* Frameworks */,
 				8A5B8C6424FA6D4B00DA7B21 /* Resources */,
+				8AEDA52A24FA6DEF00D96DE4 /* Embed Frameworks */,
 			);
 			buildRules = (
 			);
@@ -113,12 +167,28 @@
 			mainGroup = 8A5B8C5D24FA6D4B00DA7B21;
 			productRefGroup = 8A5B8C6724FA6D4B00DA7B21 /* Products */;
 			projectDirPath = "";
+			projectReferences = (
+				{
+					ProductGroup = 8AEDA52224FA6DE700D96DE4 /* Products */;
+					ProjectRef = 8AEDA52124FA6DE700D96DE4 /* MVVM-Architecture.xcodeproj */;
+				},
+			);
 			projectRoot = "";
 			targets = (
 				8A5B8C6524FA6D4B00DA7B21 /* MovieApp-Client */,
 			);
 		};
 /* End PBXProject section */
+
+/* Begin PBXReferenceProxy section */
+		8AEDA52624FA6DE700D96DE4 /* MVVM_Architecture.framework */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.framework;
+			path = MVVM_Architecture.framework;
+			remoteRef = 8AEDA52524FA6DE700D96DE4 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+/* End PBXReferenceProxy section */
 
 /* Begin PBXResourcesBuildPhase section */
 		8A5B8C6424FA6D4B00DA7B21 /* Resources */ = {
@@ -293,7 +363,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = "tanselkahyaoglu.MovieApp-Client";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
 		};
@@ -310,7 +380,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = "tanselkahyaoglu.MovieApp-Client";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;
 		};

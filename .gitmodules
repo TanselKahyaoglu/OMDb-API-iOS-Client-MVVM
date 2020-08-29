@@ -1,0 +1,3 @@
+[submodule "MovieApp-Client/Submodules/Swift-MVVM-Architecture"]
+	path = MovieApp-Client/Submodules/Swift-MVVM-Architecture
+	url = https://github.com/TanselKahyaoglu/Swift-MVVM-Architecture.git
