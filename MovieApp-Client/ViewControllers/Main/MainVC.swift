@@ -15,37 +15,79 @@ class MainVC: BaseVC<MainViewModel> {
     @IBOutlet private weak var viewSearch: UIView!
     @IBOutlet private weak var tfSearch: UITextField!
     @IBOutlet private weak var btnSearch: UIButton!
-    @IBOutlet private weak var btnFilter: UIButton!
-    
+    @IBOutlet private weak var btnFilter: PickerButton!
+    @IBOutlet private weak var tvResults: UITableView!
+    @IBOutlet private weak var viewWarning: WarningView!
+        
     private enum MainVCState {
-        case NoResult, Cleared, SearchResults
+        case Initial, NoResult, Cleared, SearchResults
     }
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        configurePageState(.Cleared)
+        configureFilterPicker()
+        configureHandlers()
+        configurePageState(.Initial)
+    }
+    
+    private func configureFilterPicker() {
+        btnFilter.onFilterSelected = { [weak self] row in
+            self?.viewModel?.filterResults(self?.viewModel?.filterTypes[row] ?? .All)
+            DispatchQueue.main.async {
+                self?.tvResults.reloadData()
+            }
+        }
+        btnFilter.configureInputs(inputs: viewModel?.filterTypes.map { $0.rawValue } ?? [])
     }
     
     private func configurePageState(_ state: MainVCState) {
         switch state {
+        case .Initial:
+            configureInitialState()
+            break
         case .NoResult:
-            btnFilter.isHidden = true
+            configureNoResultState()
+            break
         case .Cleared:
-            btnFilter.isHidden = true
-            setInitialResources()
+            configureClearedState()
+            break
         case .SearchResults:
-            btnFilter.isHidden = false
+            configureSearchResultsState()
+            break
         }
     }
     
-    private func setInitialResources() {
+    private func configureSearchResultsState() {
+        viewWarning.hide()
+        btnFilter.isHidden = false
+        tvResults.isHidden = false
+        btnFilter.initialTitle = "Filter"
+        tvResults.reloadData()
+    }
+    
+    private func configureNoResultState() {
+        viewWarning.show(.Error, message: "No result found")
+        btnFilter.isHidden = true
+        tvResults.isHidden = true
+    }
+    
+    private func configureClearedState() {
+        viewWarning.hide()
+        btnFilter.isHidden = true
+        tvResults.isHidden = true
+    }
+    
+    private func configureInitialState() {
+        viewWarning.isHidden = true
+        tvResults.isHidden = true
         tfSearch.placeholder = "Search..."
-        btnFilter.setTitle("Filter", for: .normal)
+        btnFilter.initialTitle = "Filter"
+        btnFilter.isHidden = true
     }
     
     private func configureHandlers() {
         viewModel?.onResponse = { [weak self] result in
-            if result.isSuccess {
+            if result {
                 self?.configurePageState(.SearchResults)
             } else {
                 self?.configurePageState(.NoResult)
@@ -55,11 +97,13 @@ class MainVC: BaseVC<MainViewModel> {
     
     private func doSearch() {
         tfSearch.endEditing(true)
-        if let keyword = tfSearch.text {
+        btnFilter.resetPicker()
+        if let keyword = tfSearch.text, keyword.count > 3 {
             viewModel?.doSearch(keyword: keyword)
+        } else {
+            viewWarning.show(.Info, message: "Please enter at least 3 character")
         }
     }
-    
     
     @IBAction private func actionSearch(_ sender: Any) {
         doSearch()
@@ -69,9 +113,18 @@ class MainVC: BaseVC<MainViewModel> {
         doSearch()
     }
     
-    @IBAction private func actionFilter(_ sender: Any) {
+}
+
+extension MainVC: UITableViewDelegate, UITableViewDataSource {
+    
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return viewModel?.movieArr.count ?? 0
     }
     
-    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        guard let cell = tableView.dequeueReusableCell(withIdentifier: "MovieListTableCell") as? MovieListTableCell else { return UITableViewCell() }
+        cell.movie = viewModel?.movieArr[indexPath.row]
+        return cell
+    }
     
 }
