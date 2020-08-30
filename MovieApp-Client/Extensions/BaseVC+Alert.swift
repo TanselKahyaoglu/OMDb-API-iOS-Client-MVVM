@@ -21,7 +21,7 @@ extension BaseVC {
         } else {
             alert.addAction(UIAlertAction(title: "Okay", style: .cancel))
         }
-        show(alert, sender: nil)
+        present(alert, animated: true)
     }
     
 }
