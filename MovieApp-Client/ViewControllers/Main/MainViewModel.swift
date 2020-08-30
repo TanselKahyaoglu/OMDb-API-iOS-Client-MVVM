@@ -18,7 +18,8 @@ class MainViewModel: BaseViewModel {
     }
 
     var onResponse: Handler<Bool>?
-    
+    var onFailure: Handler<String>?
+
     private var searchResults = [SearchListModel]()
     var selectedFilterType: FilterType = .All
     
@@ -51,7 +52,7 @@ class MainViewModel: BaseViewModel {
     }
     
     private func handleFailure(_ error: BaseErrorResponse) {
-        onResponse?(false)
+        onFailure?(error.error ?? "")
     }
     
 }

@@ -23,4 +23,15 @@ class MovieService {
         
     }
     
+    func getInfo(id: String,
+                 onSuccess: @escaping Handler<MovieDetailsResponse>,
+                 onFailed: @escaping Handler<BaseErrorResponse>) {
+        let params = ["apiKey": "33bc3aba",
+                      "i": id]
+        Networking.request(method: .get,
+                           urlParameters: params,
+                           succeed: onSuccess,
+                           failed: onFailed)
+    }
+    
 }

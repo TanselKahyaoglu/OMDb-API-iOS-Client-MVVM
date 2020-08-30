@@ -33,11 +33,22 @@ class MainVC: BaseVC<MainViewModel> {
     private func configureFilterPicker() {
         btnFilter.onFilterSelected = { [weak self] row in
             self?.viewModel?.filterResults(self?.viewModel?.filterTypes[row] ?? .All)
-            DispatchQueue.main.async {
+            self?.configureFilteredResults()
+        }
+        btnFilter.configureInputs(inputs: viewModel?.filterTypes.map { $0.rawValue.localized() } ?? [])
+    }
+    
+    private func configureFilteredResults() {
+        DispatchQueue.main.async { [weak self] in
+            if self?.viewModel?.movieArr.isEmpty ?? false {
+                self?.viewWarning.show(.Info, message: "no_result_filter".localized())
+                self?.tvResults.isHidden = true
+            } else {
+                self?.viewWarning.hide()
+                self?.tvResults.isHidden = false
                 self?.tvResults.reloadData()
             }
         }
-        btnFilter.configureInputs(inputs: viewModel?.filterTypes.map { $0.rawValue } ?? [])
     }
     
     private func configurePageState(_ state: MainVCState) {
@@ -61,12 +72,12 @@ class MainVC: BaseVC<MainViewModel> {
         viewWarning.hide()
         btnFilter.isHidden = false
         tvResults.isHidden = false
-        btnFilter.initialTitle = "Filter"
+        btnFilter.initialTitle = "filter".localized()
         tvResults.reloadData()
     }
     
     private func configureNoResultState() {
-        viewWarning.show(.Error, message: "No result found")
+        viewWarning.show(.Error, message: "no_result".localized())
         btnFilter.isHidden = true
         tvResults.isHidden = true
     }
@@ -80,8 +91,8 @@ class MainVC: BaseVC<MainViewModel> {
     private func configureInitialState() {
         viewWarning.isHidden = true
         tvResults.isHidden = true
-        tfSearch.placeholder = "Search..."
-        btnFilter.initialTitle = "Filter"
+        tfSearch.placeholder = "search".localized()
+        btnFilter.initialTitle = "filter".localized()
         btnFilter.isHidden = true
     }
     
@@ -93,6 +104,14 @@ class MainVC: BaseVC<MainViewModel> {
                 self?.configurePageState(.NoResult)
             }
         }
+        
+        viewModel?.onFailure = { [weak self] error in
+            if !error.isEmpty {
+                self?.showAlert(title: "network_error".localized(), message: error)
+            } else {
+                self?.showAlert(title: "network_error".localized(), message: "check_internet".localized())
+            }
+        }
     }
     
     private func doSearch() {
@@ -101,7 +120,7 @@ class MainVC: BaseVC<MainViewModel> {
         if let keyword = tfSearch.text, keyword.count > 3 {
             viewModel?.doSearch(keyword: keyword)
         } else {
-            viewWarning.show(.Info, message: "Please enter at least 3 character")
+            viewWarning.show(.Info, message: "minimum_character".localized())
         }
     }
     
@@ -122,9 +141,19 @@ extension MainVC: UITableViewDelegate, UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        guard let cell = tableView.dequeueReusableCell(withIdentifier: "MovieListTableCell") as? MovieListTableCell else { return UITableViewCell() }
+        guard let cell = tableView.dequeueReusableCell(withIdentifier: "MovieListTableCell") as? MovieListTableCell else {
+            return UITableViewCell()
+        }
         cell.movie = viewModel?.movieArr[indexPath.row]
         return cell
+    }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        if let vc = storyboard?.instantiateViewController(identifier: "DetailsVC") as? DetailsVC,
+            let movie = viewModel?.movieArr[indexPath.row] {
+            vc.viewData = DetailsViewData(movie: movie)
+            navigationController?.pushViewController(vc, animated: true)
+        }
     }
     
 }

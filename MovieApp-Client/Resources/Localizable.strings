@@ -1,0 +1,24 @@
+/* 
+  Localizable.strings
+  MovieApp-Client
+
+  Created by Tansel Kahyaoglu on 30.08.2020.
+  Copyright © 2020 Tansel Kahyaoglu. All rights reserved.
+*/
+
+"filter" = "Filter";
+"search" = "Search...";
+
+"network_error" = "Network Error";
+"check_internet" = "Check your internet connection";
+
+"minimum_character" = "Please enter at least 3 character";
+"no_result" = "No result found";
+"no_result_filter" = "No result found on filter.";
+
+
+//filters
+"movie" = "Movie";
+"game" = "Game";
+"series" = "Series";
+"All" = "All";

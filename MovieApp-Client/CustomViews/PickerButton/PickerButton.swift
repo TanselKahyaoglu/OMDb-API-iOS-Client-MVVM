@@ -82,7 +82,7 @@ extension PickerButton: UIPickerViewDataSource, UIPickerViewDelegate {
     }
     
     func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
-        setTitle(inputs?[row].capitalized, for: .normal)
+        setTitle(inputs?[row], for: .normal)
         tfInput.endEditing(true)
         onFilterSelected?(row)
     }

@@ -21,7 +21,7 @@ extension UIImageView {
                     }
                 }
             } catch {
-                print("Error on getting image")
+                print("Error on getting image. \n Url: \(url)")
             }
         }
 
