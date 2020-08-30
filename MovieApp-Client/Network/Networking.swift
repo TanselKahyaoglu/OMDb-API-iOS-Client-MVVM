@@ -21,6 +21,7 @@ class Networking {
     
     class func request<S: Decodable, F: BaseErrorResponse>(method: HTTPMethod,
                                                               urlParameters: [String: String],
+                                                              showLoading: Bool = true,
                                                               succeed: @escaping (S) -> Void,
                                                               failed: @escaping (F) -> Void) {
         
@@ -34,8 +35,14 @@ class Networking {
         var request = URLRequest(url: url)
         request.httpMethod = method.rawValue
         
+        if showLoading {
+            showIndicator()
+        }
         URLSession.shared.dataTask(with: request,
                                    completionHandler: { data, response, error in
+                                    if showLoading {
+                                        hideIndicator()
+                                    }
                                     if let error = error {
                                         DispatchQueue.main.async {
                                             failed(F(error: error.localizedDescription))
@@ -57,10 +64,20 @@ class Networking {
                                             }
                                         } else {
                                             DispatchQueue.main.async {
-                                                failed(F(error: "Error on server. Response code: \(status.statusCode)", code: status.statusCode))
+                                             //   failed(F(error: "Error on server. Response code: \(status.statusCode)", code: status.statusCode))
                                             }
                                         }
                                     }
         }).resume()
     }
+    
+    
+    private class func showIndicator() {
+        LoadingHelper.shared.show()
+    }
+    
+    private class func hideIndicator() {
+        LoadingHelper.shared.hide()
+    }
+    
 }

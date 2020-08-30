@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="16097.2" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="16087"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" id="iN0-l3-epB" customClass="LoadingIndicator" customModule="MovieApp_Client" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="pvm-Fq-Xkj">
+                    <rect key="frame" x="172" y="413" width="70" height="70"/>
+                    <subviews>
+                        <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" animating="YES" style="large" translatesAutoresizingMaskIntoConstraints="NO" id="XP2-k5-FQZ">
+                            <rect key="frame" x="15" y="15" width="40" height="40"/>
+                            <constraints>
+                                <constraint firstAttribute="height" constant="40" id="CtB-OZ-W50"/>
+                                <constraint firstAttribute="width" constant="40" id="FNC-Va-u72"/>
+                            </constraints>
+                        </activityIndicatorView>
+                    </subviews>
+                    <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                    <constraints>
+                        <constraint firstItem="XP2-k5-FQZ" firstAttribute="top" secondItem="pvm-Fq-Xkj" secondAttribute="top" constant="15" id="1bI-ME-Hod"/>
+                        <constraint firstItem="XP2-k5-FQZ" firstAttribute="leading" secondItem="pvm-Fq-Xkj" secondAttribute="leading" constant="15" id="Obb-AO-0e6"/>
+                        <constraint firstAttribute="trailing" secondItem="XP2-k5-FQZ" secondAttribute="trailing" constant="15" id="fxw-wm-fMU"/>
+                        <constraint firstAttribute="bottom" secondItem="XP2-k5-FQZ" secondAttribute="bottom" constant="15" id="uv8-3g-Az2"/>
+                    </constraints>
+                    <userDefinedRuntimeAttributes>
+                        <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                            <real key="value" value="5"/>
+                        </userDefinedRuntimeAttribute>
+                    </userDefinedRuntimeAttributes>
+                </view>
+            </subviews>
+            <color key="backgroundColor" white="0.66666666666666663" alpha="0.29357394366197181" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+            <constraints>
+                <constraint firstItem="pvm-Fq-Xkj" firstAttribute="centerX" secondItem="iN0-l3-epB" secondAttribute="centerX" id="1YD-WG-tLF"/>
+                <constraint firstItem="pvm-Fq-Xkj" firstAttribute="centerY" secondItem="iN0-l3-epB" secondAttribute="centerY" id="oE0-7k-Dc1"/>
+            </constraints>
+            <viewLayoutGuide key="safeArea" id="vUN-kp-3ea"/>
+            <point key="canvasLocation" x="139" y="120"/>
+        </view>
+    </objects>
+</document>
