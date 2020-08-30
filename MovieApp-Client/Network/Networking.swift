@@ -57,7 +57,7 @@ class Networking {
                                             }
                                         } else {
                                             DispatchQueue.main.async {
-                                                failed(F(error: "Error", code: status.statusCode))
+                                                failed(F(error: "Error on server. Response code: \(status.statusCode)", code: status.statusCode))
                                             }
                                         }
                                     }

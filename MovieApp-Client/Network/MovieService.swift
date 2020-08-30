@@ -14,7 +14,7 @@ class MovieService {
     func search(keyword: String,
                 onSuccess: @escaping Handler<SearchResponse>,
                 onFailed: @escaping Handler<BaseErrorResponse>) {
-        let params = ["apiKey": "33bc3aba",
+        let params = ["apiKey": Constants.Network.apiKey,
                       "s": keyword]
         Networking.request(method: .get,
                            urlParameters: params,
@@ -26,7 +26,7 @@ class MovieService {
     func getInfo(id: String,
                  onSuccess: @escaping Handler<MovieDetailsResponse>,
                  onFailed: @escaping Handler<BaseErrorResponse>) {
-        let params = ["apiKey": "33bc3aba",
+        let params = ["apiKey": Constants.Network.apiKey,
                       "i": id]
         Networking.request(method: .get,
                            urlParameters: params,
