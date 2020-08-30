@@ -19,7 +19,6 @@ class LoadingHelper {
     
     func show() {
         if !isShowing {
-            print("show")
             isShowing = true
             guard let window = WindowManager.getWindow() else { return }
             DispatchQueue.main.async { [weak self] in
@@ -32,7 +31,6 @@ class LoadingHelper {
     
     func hide() {
         DispatchQueue.main.async { [weak self] in
-            print("hide")
             self?.isShowing = false
             self?.loadingIndicatorView?.removeFromSuperview()
         }
