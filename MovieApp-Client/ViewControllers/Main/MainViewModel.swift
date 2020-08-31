@@ -11,7 +11,7 @@ import MVVM_Architecture
 
 class MainViewModel: BaseViewModel {
 
-    private let movieService = MovieService()
+    private var movieService: MovieService
     
     enum FilterType: String {
         case Movie = "movie", Game = "game", Series = "series", All
@@ -26,6 +26,14 @@ class MainViewModel: BaseViewModel {
     let filterTypes: [FilterType] = [.All, .Movie, .Series, .Game]
     
     var movieArr = [SearchListModel]()
+    
+    init(movieService: MovieService = MovieService()) {
+        self.movieService = movieService
+    }
+    
+    required init() {
+        movieService = MovieService()
+    }
     
     func doSearch(keyword: String) {
         movieService.search(keyword: keyword,

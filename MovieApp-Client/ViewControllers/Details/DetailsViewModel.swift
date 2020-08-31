@@ -12,10 +12,18 @@ import UIKit
 
 class DetailsViewModel: BaseViewModel {
     
-    private let movieService = MovieService()
+    private var movieService: MovieService
 
     var onResponse: Handler<MovieDetailsResponse>?
     var onFailure: Handler<String>?
+    
+    init(movieService: MovieService = MovieService()) {
+        self.movieService = movieService
+    }
+    
+    required init() {
+        movieService = MovieService()
+    }
     
     func getMovieDetails(id: String) {
         movieService.getInfo(id: id,
