@@ -45,6 +45,10 @@ struct Constants {
 }
 ```
 
+## ToDo
+
+- Pagination will be added to movie list
+
 <!-- CONTRIBUTING -->
 ## Contributing
 
